@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>黄山两日 · 2026.11.6–11.8</title>
+<style>
+:root{
+  --paper:#f6f3ec;
+  --paper-2:#fffdf8;
+  --ink:#1e2a2e;
+  --ink-2:#4a5a5e;
+  --ink-3:#7b8a8e;
+  --pine:#3c6b6e;
+  --pine-l:#5d8f92;
+  --gold:#b0803a;
+  --rain:#5f7580;
+  --line:#ddd6c8;
+  --warm:#c9622f;
+  --radius:14px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 90px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  padding:64px 18px 100px;
+  text-align:center;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 0%, #e9efe9 0%, transparent 60%),
+    linear-gradient(180deg,#f2f5f0 0%,var(--paper) 100%);
+}
+.hero::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:-1px;height:90px;
+  background:
+    radial-gradient(60% 120% at 18% 100%, var(--paper) 45%, transparent 46%),
+    radial-gradient(75% 130% at 46% 100%, var(--paper) 45%, transparent 46%),
+    radial-gradient(55% 110% at 72% 100%, var(--paper) 45%, transparent 46%),
+    radial-gradient(70% 125% at 95% 100%, var(--paper) 45%, transparent 46%);
+}
+.hero .kicker{
+  font-size:12px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--pine);font-weight:600;margin-bottom:18px;
+}
+.hero h1{
+  font-family:"Songti SC","Noto Serif SC",Georgia,serif;
+  font-size:clamp(38px,10vw,62px);
+  font-weight:700;letter-spacing:.14em;
+  margin:0 0 8px;line-height:1.15;
+  color:var(--ink);
+}
+.hero .sub{
+  font-family:"Songti SC","Noto Serif SC",Georgia,serif;
+  font-size:clamp(14px,3.6vw,17px);
+  letter-spacing:.28em;color:var(--ink-2);margin-bottom:26px;
+}
+.hero .dates{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:9px 22px;border:1px solid var(--line);border-radius:999px;
+  background:rgba(255,255,255,.65);backdrop-filter:blur(6px);
+  font-size:13.5px;color:var(--ink-2);letter-spacing:.06em;
+}
+.hero .dates b{color:var(--pine);font-weight:600}
+
+/* ---------- 概览 ---------- */
+.overview{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  margin:-58px 0 8px;position:relative;z-index:2;
+}
+.ov{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 10px;text-align:center;
+  box-shadow:0 2px 14px rgba(30,42,46,.045);
+}
+.ov .k{font-size:11px;color:var(--ink-3);letter-spacing:.14em;margin-bottom:5px}
+.ov .v{font-size:15px;font-weight:600;color:var(--pine);line-height:1.35}
+.ov .v small{display:block;font-size:11px;font-weight:400;color:var(--ink-3);letter-spacing:0}
+
+/* ---------- 通用块 ---------- */
+section{margin-top:52px}
+h2{
+  font-family:"Songti SC","Noto Serif SC",Georgia,serif;
+  font-size:23px;letter-spacing:.1em;margin:0 0 6px;
+  display:flex;align-items:center;gap:11px;
+}
+h2::before{content:"";width:5px;height:21px;background:var(--pine);border-radius:2px;flex:none}
+.h2note{font-size:13px;color:var(--ink-3);margin:0 0 22px;padding-left:16px;letter-spacing:.03em}
+
+/* ---------- 警示条 ---------- */
+.alert{
+  border-radius:var(--radius);padding:16px 18px;margin:20px 0;
+  background:#fdf3e9;border:1px solid #efd9c2;
+  font-size:14.5px;color:#7a4a22;
+}
+.alert strong{color:#a3512a}
+.alert .t{font-weight:700;display:block;margin-bottom:5px;color:#a3512a;letter-spacing:.05em}
+
+/* ---------- 天气 ---------- */
+.wx{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wxcard{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 17px;
+}
+.wxcard .day{font-size:12px;color:var(--ink-3);letter-spacing:.12em;margin-bottom:6px}
+.wxcard .cond{font-size:19px;font-weight:600;color:var(--rain);margin-bottom:10px}
+.wxcard .cond .ic{font-size:20px;margin-right:6px}
+.wxcard .row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);padding:4px 0;border-top:1px dashed var(--line)}
+.wxcard .row:first-of-type{border-top:none}
+.wxcard .row b{font-weight:600;color:var(--ink)}
+
+/* ---------- 时间轴 ---------- */
+.day{margin-bottom:34px}
+.dayhead{
+  display:flex;align-items:baseline;gap:13px;
+  padding-bottom:14px;margin-bottom:22px;
+  border-bottom:1px solid var(--line);
+}
+.dayhead .n{
+  font-family:"Songti SC",Georgia,serif;font-size:15px;font-weight:700;
+  color:#fff;background:var(--pine);border-radius:8px;
+  padding:3px 11px;letter-spacing:.08em;flex:none;
+}
+.dayhead .d{font-size:14px;color:var(--ink-2);letter-spacing:.06em}
+.dayhead .w{margin-left:auto;font-size:12.5px;color:var(--rain);letter-spacing:.03em}
+
+.tl{position:relative;padding-left:0;margin:0;list-style:none}
+.tli{
+  position:relative;padding:0 0 20px 76px;
+  border-left:2px solid var(--line);margin-left:44px;
+}
+.tli:last-child{border-left-color:transparent;padding-bottom:0}
+.tli::before{
+  content:"";position:absolute;left:-7px;top:7px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--paper);border:2.5px solid var(--pine);
+}
+.tli.key::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(176,128,58,.16)}
+.tli .tm{
+  position:absolute;left:-44px;top:2px;width:44px;
+  text-align:right;font-size:12.5px;font-weight:600;color:var(--pine);
+  font-variant-numeric:tabular-nums;letter-spacing:.02em;
+}
+.tli .ti{font-weight:650;font-size:15.5px;margin-bottom:3px}
+.tli .td{font-size:14px;color:var(--ink-2);line-height:1.7}
+.tli .tag{
+  display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:5px;
+  background:#eef2ef;color:var(--pine);margin-left:7px;letter-spacing:.05em;vertical-align:1.5px;
+}
+.tli .tag.cost{background:#f7efe2;color:var(--gold)}
+.tli .tag.warn{background:#fbeae2;color:var(--warm)}
+
+/* ---------- 表格 ---------- */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-2)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:440px}
+th,td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{
+  background:#f0efe7;font-weight:600;color:var(--ink-2);
+  font-size:12.5px;letter-spacing:.08em;white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr.total td{background:#f4f1e8;font-weight:700;color:var(--pine);font-size:15px}
+td small{display:block;color:var(--ink-3);font-size:11.5px;font-weight:400}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- 卡片网格 ---------- */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:17px 18px;
+}
+.card h4{margin:0 0 9px;font-size:14.5px;letter-spacing:.06em;color:var(--pine);display:flex;align-items:center;gap:7px}
+.card ul{margin:0;padding-left:17px;font-size:13.8px;color:var(--ink-2);line-height:1.8}
+.card li{margin-bottom:3px}
+.card li b{color:var(--ink);font-weight:600}
+
+/* ---------- 清单 ---------- */
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin:0;padding:0;list-style:none}
+.ck{display:flex;align-items:flex-start;gap:9px;font-size:14px;padding:5px 0;cursor:pointer;user-select:none}
+.ck input{display:none}
+.ck .box{
+  flex:none;width:17px;height:17px;border:1.5px solid #c3bcae;border-radius:5px;
+  margin-top:4px;position:relative;transition:.15s;
+}
+.ck input:checked + .box{background:var(--pine);border-color:var(--pine)}
+.ck input:checked + .box::after{
+  content:"";position:absolute;left:5px;top:1.5px;width:4px;height:9px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.ck input:checked ~ span{color:var(--ink-3);text-decoration:line-through}
+.ck span{line-height:1.6;transition:.15s}
+
+/* ---------- 选项 ---------- */
+.opt{
+  border-left:3px solid var(--pine-l);
+  background:var(--paper-2);border-radius:0 var(--radius) var(--radius) 0;
+  padding:14px 17px;margin-bottom:10px;font-size:14px;color:var(--ink-2);
+}
+.opt b{color:var(--ink);display:block;margin-bottom:3px;font-size:14.5px}
+
+/* ---------- 页脚 ---------- */
+footer{
+  margin-top:60px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-3);line-height:1.9;
+}
+footer a{color:var(--pine);text-decoration:none;border-bottom:1px dotted var(--pine-l)}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:640px){
+  .overview{grid-template-columns:1fr 1fr}
+  .wx,.grid,.checklist{grid-template-columns:1fr}
+  .tli{padding-left:0;margin-left:8px;border-left:none;padding-bottom:26px}
+  .tli::before{position:static;display:none}
+  .tli .tm{position:static;display:block;width:auto;text-align:left;margin-bottom:2px;color:var(--pine)}
+  .tli{border-left:2px solid var(--line);margin-left:0;padding-left:18px}
+  .tli::before{display:block;position:absolute;left:-7px;top:26px}
+  .hero{padding:48px 18px 88px}
+}
+@media print{
+  body{background:#fff}
+  .hero{padding:24px 0;background:#fff}
+  .hero::after{display:none}
+  .overview{margin-top:0}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker">Huangshan · Nov 2026</div>
+  <h1>黄 山</h1>
+  <div class="sub">两 日 一 夜 · 云 海 之 约</div>
+  <div class="dates">
+    <span><b>11.06</b> 周五</span><span>—</span><span><b>11.08</b> 周日</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="overview">
+    <div class="ov"><div class="k">人数</div><div class="v">2 人<small>合肥南会合</small></div></div>
+    <div class="ov"><div class="k">预算</div><div class="v">¥1,050<small>人均 · 两人 ¥2,100</small></div></div>
+    <div class="ov"><div class="k">天气</div><div class="v" style="color:var(--rain)">小雨<small>山顶 3–8℃</small></div></div>
+    <div class="ov"><div class="k">强度</div><div class="v">中高<small>约 9km 山路</small></div></div>
+  </div>
+
+  <div class="alert">
+    <span class="t">⚠️ 出发前必读</span>
+    这两天黄山预报是<b>小雨转中雨</b>，山顶（光明顶一带）只有 <b>3–8℃</b>，比山下低 8–10℃。雨中爬山可行，但必须<b>防滑 + 防雨 + 保暖</b>三件套齐全，且<b>看不到日出</b>。若 11/6 晚预报升级为大雨或大风，索道可能临时停运——出发前一晚务必再刷一次官方天气预报。
+  </div>
+
+  <!-- ============ 天气 ============ -->
+  <section id="weather">
+    <h2>天气与穿衣</h2>
+    <p class="h2note">截至 11/4 的公开预报，行前请以中国气象局 nmc.cn 与「黄山旅游官方平台」为准</p>
+
+    <div class="wx">
+      <div class="wxcard">
+        <div class="day">11.07 周六 · 登山日</div>
+        <div class="cond"><span class="ic">🌧</span>小雨转中雨</div>
+        <div class="row"><span>山顶（光明顶 1860m）</span><b>3 – 8℃</b></div>
+        <div class="row"><span>山脚（汤口镇）</span><b>12 – 18℃</b></div>
+        <div class="row"><span>风力 / 能见度</span><b>3–4 级 / 低</b></div>
+      </div>
+      <div class="wxcard">
+        <div class="day">11.08 周日 · 返程日</div>
+        <div class="cond"><span class="ic">🌦</span>小雨</div>
+        <div class="row"><span>屯溪市区</span><b>11 – 17℃</b></div>
+        <div class="row"><span>山顶（若再上山）</span><b>3 – 8℃</b></div>
+        <div class="row"><span>风力 / 能见度</span><b>2–3 级 / 中</b></div>
+      </div>
+    </div>
+
+    <div class="alert" style="background:#eef3f1;border-color:#cdded9;color:#2e5350">
+      <span class="t">🌫 雨天其实是黄山的「隐藏关卡」</span>
+      黄山一年 200 多天有雾，雨后初晴是<b>云海出现概率最高</b>的时候。纯下雨时视线差，但雨停后的那半小时，云海翻涌的场面比晴天更值得。建议：雨大时在光明顶/玉屏楼多等 20–30 分钟，等雨势减弱再走。
+    </div>
+
+    <div class="grid" style="margin-top:16px">
+      <div class="card">
+        <h4>👕 上身（三层法）</h4>
+        <ul>
+          <li><b>内层</b>：速干短袖 / 速干长袖（不要纯棉，湿了不干会失温）</li>
+          <li><b>中层</b>：抓绒衣 或 薄羽绒（山顶静态时 3℃ 很冷）</li>
+          <li><b>外层</b>：冲锋衣 或 带帽防水外套（伞在山上是负担，风大还危险）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>👖 下身与鞋</h4>
+        <ul>
+          <li><b>裤子</b>：速干运动裤 / 冲锋裤，别穿牛仔裤（湿了又重又硬）</li>
+          <li><b>鞋</b>：<b>防滑徒步鞋或越野跑鞋</b>，鞋底要有齿。帆布鞋、小白鞋、板鞋在湿石阶上等于滑冰</li>
+          <li><b>袜子</b>：多带一双干的放包里</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 行程 ============ -->
+  <section id="plan">
+    <h2>三天行程</h2>
+    <p class="h2note">合肥南会合 → 汤口住一晚 → 周六登黄山 → 屯溪洗浴中心过夜 → 周日老街返程</p>
+
+    <!-- DAY 1 -->
+    <div class="day">
+      <div class="dayhead">
+        <span class="n">DAY 1</span>
+        <span class="d">11月6日 周五 · 会合与进山</span>
+        <span class="w">合肥 → 黄山北 → 汤口</span>
+      </div>
+      <ul class="tl">
+        <li class="tli">
+          <span class="tm">16:30</span>
+          <div class="ti">她从南京南出发</div>
+          <div class="td">南京南 → 合肥南，约 50 分钟，二等座 <b>¥67</b>。车次极多，随到随走，选 16:30–17:10 之间任意一班即可。<span class="tag cost">¥67</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">17:30</span>
+          <div class="ti">合肥南站会合</div>
+          <div class="td">出站层碰头。顺手在站内便利店买好明天山上的干粮：面包、巧克力、牛肉干、坚果，外加两瓶水。<b>山上矿泉水 10 元起、泡面 25 元</b>，自带能省一大笔。</div>
+        </li>
+        <li class="tli key">
+          <span class="tm">18:57</span>
+          <div class="ti">G7719 合肥南 → 黄山北</div>
+          <div class="td">1 小时 42 分，20:39 抵达。二等座 <b>¥140.5/人</b>。这是晚间最合适的一班，再晚就没有进山的车了。<span class="tag cost">¥281 / 2人</span><span class="tag warn">提前 15 天放票，现在就买</span></div>
+        </li>
+        <li class="tli key">
+          <span class="tm">20:45</span>
+          <div class="ti">黄山北站 → 汤口镇（打车）</div>
+          <div class="td">约 50 公里，车程 50–60 分钟。<b>这个点旅游专线大巴已经停运</b>（末班约 19:30），只能打车或包车，<b>¥150–180/车</b>。建议提前一天让汤口民宿老板安排接站，通常更便宜也更靠谱。<span class="tag cost">¥160</span><span class="tag warn">别在出站口跟黑车走</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">21:45</span>
+          <div class="ti">入住汤口民宿，早睡</div>
+          <div class="td">汤口镇（寨西）是黄山南大门换乘中心所在地，标间淡季 <b>¥160–250</b>。选<b>步行 10 分钟内能到寨西换乘中心</b>的，明早能多睡 20 分钟。入住时确认老板能否帮忙叫明早的车、能否寄存行李。</div>
+        </li>
+        <li class="tli">
+          <span class="tm">22:30</span>
+          <div class="ti">洗澡、整理背包、睡觉</div>
+          <div class="td">把明天要背的东西全部装好：雨衣、干粮、水、充电宝、身份证+学生证、手套。明天 6 点起床，<b>今晚 12 点前必须睡</b>——雨天爬山比晴天累得多。</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day">
+      <div class="dayhead">
+        <span class="n">DAY 2</span>
+        <span class="d">11月7日 周六 · 登黄山</span>
+        <span class="w">小雨 · 山顶 3–8℃</span>
+      </div>
+      <ul class="tl">
+        <li class="tli">
+          <span class="tm">06:00</span>
+          <div class="ti">起床，吃早饭</div>
+          <div class="td">民宿早餐或镇上早餐店（包子豆浆，人均 ¥10）。<b>一定要吃热的</b>，今天是一整天的消耗。穿好三层衣物再出门，山上再脱。</div>
+        </li>
+        <li class="tli key">
+          <span class="tm">06:40</span>
+          <div class="ti">寨西换乘中心 → 云谷寺</div>
+          <div class="td">买景区交通车票上山，<b>¥19/人</b>，约 20 分钟到云谷寺。周末换乘中心 6:30 就开始发车，早到能避开团队客。<span class="tag cost">¥38 / 2人</span></div>
+        </li>
+        <li class="tli key">
+          <span class="tm">07:10</span>
+          <div class="ti">云谷索道上山</div>
+          <div class="td">云谷寺 → 白鹅岭，单程 <b>¥80/人</b>，约 8 分钟。<span class="tag cost">¥160 / 2人</span><br>
+          <b>雨天备选</b>：大风时索道会临时停运。若停运，可改走<b>云谷寺徒步上山</b>（约 2.5–3 小时到白鹅岭），或转去<b>玉屏索道</b>从慈光阁上山（¥90/人）。务必先看换乘中心大屏的实时通知。</div>
+        </li>
+        <li class="tli">
+          <span class="tm">07:30</span>
+          <div class="ti">白鹅岭 → 始信峰 → 黑虎松</div>
+          <div class="td">后山精华段，路相对平缓，是热身的好路段。始信峰是看「黄山松」最经典的位置，雨天云雾缭绕反而有水墨画的味道。<b>约 1 小时</b>。</div>
+        </li>
+        <li class="tli key">
+          <span class="tm">08:40</span>
+          <div class="ti">光明顶（1860m）· 全程最高点</div>
+          <div class="td">黄山第二高峰，视野最开阔。雨天可能一片白茫茫，<b>在此停留 20–30 分钟等一等</b>，云开一瞬就是全程最佳照片。这里也是全山补给点，有热水和厕所。</div>
+        </li>
+        <li class="tli">
+          <span class="tm">09:40</span>
+          <div class="ti">天海 → 鳌鱼峰 → 一线天</div>
+          <div class="td">前山最险峻的一段。<b>一线天石阶极陡且窄，雨天湿滑，务必抓牢铁链、侧身慢走</b>。如果队伍排长或雨大，走旁边的<b>鳌鱼洞</b>绕行，安全得多。</div>
+        </li>
+        <li class="tli">
+          <span class="tm">11:00</span>
+          <div class="ti">百步云梯 → 莲花亭</div>
+          <div class="td">莲花峰目前处于<b>五年封闭轮休期，不开放</b>，从莲花亭绕行即可，不用遗憾。</div>
+        </li>
+        <li class="tli key">
+          <span class="tm">12:00</span>
+          <div class="ti">玉屏楼 · 迎客松 · 午餐</div>
+          <div class="td">黄山标志性景点，雨天人也最少，能拍到没有路人甲的迎客松。<br>
+          <b>午餐方案</b>：玉屏楼有餐厅，简餐 <b>¥50–80/人</b>；省钱就吃自带干粮+山上热水泡面（约 ¥25）。找个避雨的檐下坐着吃，别边走边吃。<span class="tag cost">¥80–160</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">13:30</span>
+          <div class="ti">玉屏索道下山</div>
+          <div class="td">玉屏楼 → 慈光阁，<b>¥90/人</b>，约 8 分钟。<span class="tag cost">¥180 / 2人</span><br>
+          <b>省钱选项</b>：从玉屏楼步行下山到慈光阁约 2–2.5 小时，省 ¥180。但<b>雨天石阶下行对膝盖和脚踝很不友好</b>，除非你们体力很好且带了登山杖，否则不建议。</div>
+        </li>
+        <li class="tli">
+          <span class="tm">14:10</span>
+          <div class="ti">慈光阁 → 寨西换乘中心</div>
+          <div class="td">景交车 <b>¥19/人</b>，取回寄存在民宿的行李。<span class="tag cost">¥38 / 2人</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">15:00</span>
+          <div class="ti">汤口 → 屯溪（市区）</div>
+          <div class="td">换乘中心有直达屯溪的班车，<b>¥30/人，末班约 18:00</b>，车程 1 小时。或民宿帮忙叫拼车 ¥40/人。今晚住市区，为明天的老街和返程做准备。<span class="tag cost">¥60 / 2人</span></div>
+        </li>
+        <li class="tli key">
+          <span class="tm">16:30</span>
+          <div class="ti">入住洗浴中心 · 泡澡按摩</div>
+          <div class="td">推荐屯溪市区的 <b>汤山漫温泉馆</b>（齐云大道，24 小时，有温泉+汗蒸+太空舱/客房，适合过夜）或 <b>滨江水城</b>（屯光大道，24 小时，通票含澡+汗蒸+自助餐，过夜不另收费）。<b>务必提前打电话确认情侣能安排同一间休息室</b>——很多洗浴中心的休息大厅是男女分开的。<span class="tag cost">约 ¥256</span><span class="tag warn">先打电话订包间</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">17:00</span>
+          <div class="ti">洗澡 → 汗蒸 → 按摩 → 晚餐</div>
+          <div class="td">爬了一天，<b>先泡后按</b>：泡澡 20 分钟放松肌肉，再汗蒸 15 分钟（别超过 20 分钟，刚剧烈运动完容易头晕脱水），最后足底/全身按摩 60 分钟。<b>多喝水</b>。通票一般含自助餐，吃饱点。<span class="tag cost">按摩约 ¥120</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">21:00</span>
+          <div class="ti">休息，睡觉</div>
+          <div class="td">把今天湿掉的衣服挂出来晾，明天要穿的干衣服从行李里拿出来。明天 8 点起，终于可以睡个懒觉。</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day">
+      <div class="dayhead">
+        <span class="n">DAY 3</span>
+        <span class="d">11月8日 周日 · 老街与返程</span>
+        <span class="w">小雨 · 11–17℃</span>
+      </div>
+      <ul class="tl">
+        <li class="tli">
+          <span class="tm">08:00</span>
+          <div class="ti">自然醒，洗浴中心早餐</div>
+          <div class="td">退房时间通常是 12 小时或 24 小时通票，确认好时限。行李可寄存前台，轻装出门。</div>
+        </li>
+        <li class="tli key">
+          <span class="tm">09:30</span>
+          <div class="ti">屯溪老街（免费）</div>
+          <div class="td">「流动的清明上河图」，1.5 公里青石板老街，徽派马头墙。雨天的老街反而好看——湿石板反光，人少，拍照出片。<br>
+          必吃：<b>黄山烧饼</b>（¥10/袋）、<b>毛豆腐</b>（¥15）、<b>徽州臭鳜鱼</b>（¥80–120，两人一份刚好）。<span class="tag">门票 ¥0</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">11:00</span>
+          <div class="ti">黎阳 in 巷（免费）</div>
+          <div class="td">老街西侧，过一座桥就到。老徽派建筑改造的文创街区，咖啡馆和小店多，适合坐着歇脚、拍合影。<span class="tag">门票 ¥0</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">12:00</span>
+          <div class="ti">午餐 · 徽菜</div>
+          <div class="td">老街上的徽菜馆，人均 ¥60–80。点臭鳜鱼 + 一品锅 + 时蔬就够两人吃。<span class="tag cost">¥120–160</span></div>
+        </li>
+        <li class="tli">
+          <span class="tm">13:30</span>
+          <div class="ti">打车去黄山北站</div>
+          <div class="td">约 15 公里，25 分钟，¥30–40。<b>预留足足 1 小时</b>，周日返程高峰，市区可能堵。</div>
+        </li>
+        <li class="tli key">
+          <span class="tm">15:00</span>
+          <div class="ti">各自返程</div>
+          <div class="td">
+            <b>她</b>：黄山北 → 南京南，直达约 2 小时，二等座 <b>¥152</b>。<br>
+            <b>他</b>：黄山北 → 合肥南，约 1.5 小时，二等座 <b>¥140.5</b>。<br>
+            黄山北→南京南末班车时间不稳定（约 18:45 前），<b>务必买 15:00–16:30 之间的车次</b>，别赌末班。<span class="tag cost">¥292.5</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 预算 ============ -->
+  <section id="budget">
+    <h2>预算明细</h2>
+    <p class="h2note">按两人计算；学生证可享门票半价，这是最大的一笔省钱项</p>
+
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>项目</th><th>标准版</th><th>精简版</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>高铁<small>南京南→合肥南 ¥67 / 合肥南→黄山北 ¥140.5×2 / 返程 ¥152+¥140.5</small></td><td class="num">640</td><td class="num">640</td></tr>
+          <tr><td>黄山北 ⇄ 汤口<small>夜间打车单程</small></td><td class="num">160</td><td class="num">160</td></tr>
+          <tr><td>汤口 → 屯溪<small>班车 ¥30×2</small></td><td class="num">60</td><td class="num">60</td></tr>
+          <tr><td>黄山门票<small>学生半价 ¥95×2（全票 ¥190）</small></td><td class="num">190</td><td class="num">190</td></tr>
+          <tr><td>索道<small>云谷上 ¥80 + 玉屏下 ¥90</small></td><td class="num">340</td><td class="num">160</td></tr>
+          <tr><td>景区交通车<small>¥19×2 人 × 上下各一次</small></td><td class="num">76</td><td class="num">76</td></tr>
+          <tr><td>周五住宿<small>汤口标间 / 民宿</small></td><td class="num">180</td><td class="num">140</td></tr>
+          <tr><td>洗浴中心<small>通票含澡+汗蒸+自助餐</small></td><td class="num">256</td><td class="num">198</td></tr>
+          <tr><td>按摩<small>可选</small></td><td class="num">120</td><td class="num">0</td></tr>
+          <tr><td>餐饮<small>3 天，含山上 1 顿</small></td><td class="num">300</td><td class="num">240</td></tr>
+          <tr><td>市内打车 + 零碎<small>雨衣、登山杖、寄存</small></td><td class="num">100</td><td class="num">80</td></tr>
+          <tr class="total"><td>合计</td><td class="num">¥2,422</td><td class="num">¥1,944</td></tr>
+          <tr><td><small>人均</small></td><td class="num"><small>¥1,211</small></td><td class="num"><small>¥972</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="opt" style="margin-top:16px">
+      <b>💡 怎么把人均压到 1k 以内</b>
+      两条硬支出占了预算一半多：<b>高铁（¥640）</b>和<b>索道（¥340）</b>。想省钱只有三个地方能动：①只坐上行索道、步行下山（省 ¥180，但雨天伤膝盖）；②洗浴中心选 12 小时基础票（省 ¥58）；③山上那顿吃自带的（省 ¥60）。砍掉按摩能再省 ¥120。<br>
+      如果她愿意接受「不绕合肥、直接从南京南到黄山北」，车票能再省 ¥55、时间省 1 小时——但会少掉合肥南站那次会合。<b>这是唯一一处需要你们自己拍板的取舍。</b>
+    </div>
+  </section>
+
+  <!-- ============ 装备 ============ -->
+  <section id="pack">
+    <h2>装备清单</h2>
+    <p class="h2note">点击可勾选，进度会保存在本机</p>
+
+    <div class="card" style="padding:20px 22px">
+      <ul class="checklist" id="packlist">
+        <li><label class="ck"><input type="checkbox" data-k="p1"><span class="box"></span><span>身份证（两人）+ <b>学生证原件</b></span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p2"><span class="box"></span><span>防滑徒步鞋 / 越野跑鞋</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p3"><span class="box"></span><span>冲锋衣或防水外套（带帽）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p4"><span class="box"></span><span>抓绒衣 / 薄羽绒（山顶 3℃）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p5"><span class="box"></span><span>速干衣裤（勿穿棉、勿穿牛仔）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p6"><span class="box"></span><span>一次性雨衣 ×2（山下买 ¥5，山上 ¥15）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p7"><span class="box"></span><span>登山杖 ×2（山下 ¥10–20/根）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p8"><span class="box"></span><span>防滑手套（抓湿铁链不冻手）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p9"><span class="box"></span><span>干粮：面包、巧克力、牛肉干</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p10"><span class="box"></span><span>保温杯（装热水）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p11"><span class="box"></span><span>充电宝 + 数据线</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p12"><span class="box"></span><span>手机防水袋 / 密封袋</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p13"><span class="box"></span><span>换洗内衣 + 干袜子 ×2</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p14"><span class="box"></span><span>洗漱包（洗浴中心有，但自带更安心）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p15"><span class="box"></span><span>纸巾 / 湿巾</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p16"><span class="box"></span><span>现金 ¥200（山上信号不稳）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p17"><span class="box"></span><span>小头灯或手电（防天黑下山）</span></label></li>
+        <li><label class="ck"><input type="checkbox" data-k="p18"><span class="box"></span><span>常用药：创可贴、晕车药、肠胃药</span></label></li>
+      </ul>
+    </div>
+
+    <div class="alert" style="background:#eef4f7;border-color:#cfdfe6;color:#335660">
+      <span class="t">🎒 别背太多</span>
+      黄山台阶陡、雨天路滑，<b>背包越轻越安全</b>。你们周五晚到、周日走，只需带一个 20–25L 的双肩包 + 一个手提袋。大件行李寄存在汤口民宿（周六早上取）或直接带去洗浴中心寄存。
+    </div>
+  </section>
+
+  <!-- ============ 注意事项 ============ -->
+  <section id="notes">
+    <h2>必须提前做的事</h2>
+    <p class="h2note">这几项没做，到了现场会很麻烦</p>
+
+    <div class="grid">
+      <div class="card">
+        <h4>🎫 现在就该订</h4>
+        <ul>
+          <li><b>高铁票</b>：提前 15 天放票，11/6 的 G7719 和返程票现在就能买，周末票紧俏</li>
+          <li><b>汤口民宿</b>：选步行到寨西换乘中心 10 分钟内的</li>
+          <li><b>洗浴中心</b>：打电话确认情侣能否同间休息、能否过夜、通票时长</li>
+          <li><b>黄山北接站</b>：让民宿老板安排，比现场打车便宜</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>📱 景区预约</h4>
+        <ul>
+          <li>微信搜 <b>「黄山旅游官方平台」</b> 小程序，<b>实名预约门票 + 索道票</b>，选「南大门 · 云谷寺方向」进山时段</li>
+          <li>门票检票后 <b>3 日内可多次入园</b></li>
+          <li><b>天都峰</b>需单独预约、且雨天常关闭，本次不安排</li>
+          <li><b>莲花峰</b>封闭轮休中，不开放</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="opt" style="margin-top:16px">
+      <b>⛰ 爬山安全（雨天特别版）</b>
+      ① <b>下台阶永远侧身走</b>，重心压低，抓铁链的手不要松；② 遇雷雨立刻远离山顶、铁链和孤立大树，往低处有遮蔽的地方走；③ 山上温度低，一旦觉得冷、发抖、说话含糊，那是失温前兆，马上加衣服、吃高热量food、找室内；④ 15:00 后徒步下山通道会关闭，<b>务必在 14:30 前到索道口</b>；⑤ 索道停运时不要硬等，改徒步或直接下撤，安全第一。
+    </div>
+
+    <div class="opt">
+      <b>🌧 雨天 Plan B</b>
+      如果周六早上发现是中到大雨、或索道已停运公告：<b>方案一</b>改去黄山脚下的<b>翡翠谷 / 九龙瀑</b>（雨中水量大反而好看，门票 ¥60 左右）；<b>方案二</b>直接放弃上山，下午去屯溪泡洗浴中心，周日再视天气决定。<b>门票未使用可退，不用硬扛。</b>
+    </div>
+
+    <div class="opt">
+      <b>💑 一点私心建议</b>
+      雨天爬山体验会打折，但也是你们能一起记住的版本。带一件能盖住两个人的雨衣、一副耳机、一句「慢点，我等你」。光明顶上如果什么都看不见，就拍一张白茫茫的合影——十年后翻出来，比晴天那张更有故事。
+    </div>
+  </section>
+
+  <footer>
+    <p><b>数据来源与核实渠道</b>（票价与时刻会浮动，出行前请以官方为准）：</p>
+    <p>
+      车次与余票 · <a href="https://www.12306.cn" target="_blank" rel="noopener">12306</a>　|
+      景区预约与门票 · 「黄山旅游官方平台」微信小程序　|
+      天气 · <a href="https://www.nmc.cn/publish/forecast/AAH/huangshan.html" target="_blank" rel="noopener">中国气象局黄山站</a>
+    </p>
+    <p style="margin-top:14px;color:#a8a49a">本页最后更新于 2026年11月4日 · 行程可随时改动，改完重新推送即可</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  try{
+    var boxes = document.querySelectorAll('#packlist input[type=checkbox]');
+    boxes.forEach(function(b){
+      var k = 'hs_trip_2026_' + b.dataset.k;
+      if(localStorage.getItem(k) === '1') b.checked = true;
+      b.addEventListener('change', function(){
+        localStorage.setItem(k, b.checked ? '1' : '0');
+      });
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
